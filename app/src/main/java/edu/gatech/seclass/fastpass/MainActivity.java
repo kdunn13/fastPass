@@ -36,7 +36,7 @@ import edu.gatech.seclass.fastpass.form;
 import static android.nfc.NdefRecord.createMime;
 
 
-public class MainActivity extends AppCompatActivity implements NfcAdapter.CreateNdefMessageCallback {
+public class MainActivity extends AppCompatActivity  {
 
     private Button addFormButton;
     private Button recieveFileButton;
@@ -61,40 +61,40 @@ public class MainActivity extends AppCompatActivity implements NfcAdapter.Create
 
         formListAdapter = new ArrayAdapter<form>(MainActivity.this, android.R.layout.simple_list_item_1, listOfForms);
         formListView.setAdapter(formListAdapter);
-
-        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if (mNfcAdapter == null) {
-            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-        // Register callback
-        mNfcAdapter.setNdefPushMessageCallback(this, this);
-
-        performTagOperations(getIntent());
+//
+//        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+//        if (mNfcAdapter == null) {
+//            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+//            finish();
+//            return;
+//        }
+//        // Register callback
+//        mNfcAdapter.setNdefPushMessageCallback(this, this);
+//
+//        performTagOperations(getIntent());
 
 
     }
 
-    @Override
-    public NdefMessage createNdefMessage(NfcEvent event) {
-        String text = ("Beam me up, Android!\n\n" +
-                "Beam Time: " + System.currentTimeMillis());
-        NdefMessage msg = new NdefMessage(
-                new NdefRecord[] { createMime(
-                        "application/vnd.com.example.android.beam", text.getBytes())
-                        /**
-                         * The Android Application Record (AAR) is commented out. When a device
-                         * receives a push with an AAR in it, the application specified in the AAR
-                         * is guaranteed to run. The AAR overrides the tag dispatch system.
-                         * You can add it back in to guarantee that this
-                         * activity starts when receiving a beamed message. For now, this code
-                         * uses the tag dispatch system.
-                        */
-                        //,NdefRecord.createApplicationRecord("com.example.android.beam")
-                });
-        return msg;
-    }
+//    @Override
+//    public NdefMessage createNdefMessage(NfcEvent event) {
+//        String text = ("Beam me up, Android!\n\n" +
+//                "Beam Time: " + System.currentTimeMillis());
+//        NdefMessage msg = new NdefMessage(
+//                new NdefRecord[] { createMime(
+//                        "application/vnd.com.example.android.beam", text.getBytes())
+//                        /**
+//                         * The Android Application Record (AAR) is commented out. When a device
+//                         * receives a push with an AAR in it, the application specified in the AAR
+//                         * is guaranteed to run. The AAR overrides the tag dispatch system.
+//                         * You can add it back in to guarantee that this
+//                         * activity starts when receiving a beamed message. For now, this code
+//                         * uses the tag dispatch system.
+//                        */
+//                        //,NdefRecord.createApplicationRecord("com.example.android.beam")
+//                });
+//        return msg;
+//    }
 
 
     private void setupViews() {
@@ -123,7 +123,11 @@ public class MainActivity extends AppCompatActivity implements NfcAdapter.Create
         {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
             {
-                editForm(position);
+                Intent listIntent = new Intent(getApplicationContext(), editFormActivity.class);
+                listIntent.putExtra("formID",listOfForms.get(position).formID);
+                startActivity(listIntent);
+
+                // editForm(position);
             }
         });
 
@@ -316,11 +320,14 @@ public class MainActivity extends AppCompatActivity implements NfcAdapter.Create
         // record 0 contains the MIME type, record 1 is the AAR, if present
         textView.setText(new String(msg.getRecords()[0].getPayload()));
     }
-    private void performTagOperations(Intent intent){
-        String action = intent.getAction();
-        if(action.equals(NfcAdapter.ACTION_TAG_DISCOVERED) ||
-                action.equals(NfcAdapter.ACTION_TECH_DISCOVERED) ){
-        }
-    }
+
+
+
+//    private void performTagOperations(Intent intent){
+//        String action = intent.getAction();
+//        if(action.equals(NfcAdapter.ACTION_TAG_DISCOVERED) ||
+//                action.equals(NfcAdapter.ACTION_TECH_DISCOVERED) ){
+//        }
+//    }
 
 }
