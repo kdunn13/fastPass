@@ -1,9 +1,9 @@
 package edu.gatech.seclass.fastpass;
 
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
+//import android.nfc.NdefMessage;
+//import android.nfc.NdefRecord;
+//import android.nfc.NfcAdapter;
+//import android.nfc.NfcEvent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity  {
     ArrayAdapter<form> formListAdapter;
     private ListView formListView;
     private DatabaseHelper DBHelper;
-    NfcAdapter mNfcAdapter;
+   // NfcAdapter mNfcAdapter;
     TextView textView;
 
 
@@ -292,15 +292,15 @@ public class MainActivity extends AppCompatActivity  {
         alertDialog.show();
 
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // Check to see that the Activity started due to an Android Beam
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
-            processIntent(getIntent());
-        }
-    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        // Check to see that the Activity started due to an Android Beam
+//        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+//            processIntent(getIntent());
+//        }
+//    }
 
     @Override
     public void onNewIntent(Intent intent) {
@@ -311,15 +311,15 @@ public class MainActivity extends AppCompatActivity  {
     /**
      * Parses the NDEF Message from the intent and prints to the TextView
      */
-    void processIntent(Intent intent) {
-        textView = (TextView) findViewById(R.id.textView);
-        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
-                NfcAdapter.EXTRA_NDEF_MESSAGES);
-        // only one message sent during the beam
-        NdefMessage msg = (NdefMessage) rawMsgs[0];
-        // record 0 contains the MIME type, record 1 is the AAR, if present
-        textView.setText(new String(msg.getRecords()[0].getPayload()));
-    }
+//    void processIntent(Intent intent) {
+//        textView = (TextView) findViewById(R.id.textView);
+//        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
+//                NfcAdapter.EXTRA_NDEF_MESSAGES);
+//        // only one message sent during the beam
+//        NdefMessage msg = (NdefMessage) rawMsgs[0];
+//        // record 0 contains the MIME type, record 1 is the AAR, if present
+//        textView.setText(new String(msg.getRecords()[0].getPayload()));
+//    }
 
 
 

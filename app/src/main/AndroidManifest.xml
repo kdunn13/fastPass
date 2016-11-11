@@ -26,6 +26,10 @@
 
         <activity android:name=".editFormActivity">
 
+        </activity>
+
+        <activity android:name="receiveFormActivity">
+
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -41,8 +45,8 @@
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
             </intent-filter>
-
         </activity>
     </application>
+
 
 </manifest>
