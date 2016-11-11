@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity  {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
             {
                 Intent listIntent = new Intent(getApplicationContext(), editFormActivity.class);
-                listIntent.putExtra("formID",listOfForms.get(position).formID);
+                listIntent.putExtra("formID", Integer.toString(listOfForms.get(position).formID));
                 startActivity(listIntent);
 
                 // editForm(position);

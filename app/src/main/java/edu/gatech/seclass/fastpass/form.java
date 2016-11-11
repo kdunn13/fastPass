@@ -6,9 +6,9 @@ package edu.gatech.seclass.fastpass;
 
 public class form {
 
-    int formID;
-    String firstName;
-    String lastName;
+    public int formID;
+    public String firstName;
+    public String lastName;
 
     @Override
     public String toString()

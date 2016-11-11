@@ -38,6 +38,21 @@ public class DatabaseHelper {
                 new String[] {formToInsert.firstName, formToInsert.lastName});
     }
 
+    public form getFormById(int formId)
+    {
+        String query = "SELECT firstName, lastName FROM forms WHERE formID = ?;";
+        form rv = new form();
+
+        Cursor cur = gdb.rawQuery(query, new String[] {Integer.toString(formId)});
+        cur.moveToFirst();
+
+        rv.firstName = cur.getString(0);
+        rv.lastName= cur.getString(1);
+
+        cur.close();
+        return rv;
+    }
+
     public ArrayList<form> getAllLists() {
         ArrayList<form> allLists = new ArrayList<>();
         String selectQuery = "Select * from forms";

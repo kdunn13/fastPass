@@ -6,7 +6,12 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.JsonReader;
+import android.util.JsonWriter;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.nfc.NdefRecord.createMime;
 
@@ -39,8 +44,22 @@ public class editFormActivity extends AppCompatActivity implements NfcAdapter.Cr
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        String text = ("Beam me up, Android!\n\n" +
-                "Beam Time: " + System.currentTimeMillis());
+        String text = null;
+
+        String formIDAsString = getIntent().getExtras().getString("formID");
+        int formID = Integer.parseInt(formIDAsString);
+
+        form selectedForm = DBHelper.getFormById(formID);
+
+        JSONObject dataToSend = new JSONObject();
+        try {
+            dataToSend.put("firstName", selectedForm.firstName);
+            dataToSend.put("lastName", selectedForm.lastName);
+            text = dataToSend.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         NdefMessage msg = new NdefMessage(
                 new NdefRecord[] { createMime(
                         "application/vnd.com.example.android.beam", text.getBytes())
