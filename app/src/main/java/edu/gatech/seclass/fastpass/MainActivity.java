@@ -31,6 +31,7 @@ import edu.gatech.seclass.fastpass.form;
 public class MainActivity extends AppCompatActivity {
 
     private Button addFormButton;
+    private Button recieveFileButton;
     ArrayList<form> listOfForms;
     ArrayAdapter<form> formListAdapter;
     private ListView formListView;
@@ -57,12 +58,20 @@ public class MainActivity extends AppCompatActivity {
         addFormButton = (Button) findViewById(R.id.addFormButton);
         formListView = (ListView) findViewById(R.id.formList);
         formListView.setAdapter(formListAdapter);
+        recieveFileButton = (Button) findViewById(R.id.recieveFile);
 
 
         addFormButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewFormDialog();
+            }
+        });
+
+        recieveFileButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recieveFile();
             }
         });
 
@@ -75,8 +84,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        formListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           final int pos, long id)
+            {
+                return transferForm(pos);
+            }
+        });
     }
+
+    private Boolean transferForm(final int position) {
+        final form myForm = listOfForms.get(position);
+
+        Toast.makeText(MainActivity.this, "Transfer file code goes here",
+                Toast.LENGTH_SHORT).show();
+
+
+        return true;
+    };
 
     private void editForm(final int position) {
         final form myForm = listOfForms.get(position);
@@ -102,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder
                 .setCancelable(false)
                 .setPositiveButton("OK", null)
-                .setNeutralButton("Delete List",
+                .setNeutralButton("Delete Form",
                         new DialogInterface.OnClickListener()
                         {
                             public void onClick(DialogInterface dialog, int id)
@@ -114,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                                 formListAdapter.notifyDataSetChanged();
                             }
                         })
+
 
                 .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
@@ -155,6 +182,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void recieveFile() {
+        Toast.makeText(MainActivity.this, "Transfer file code goes here",
+                Toast.LENGTH_SHORT).show();
+    }
 
     private void createNewFormDialog() {
         LayoutInflater li = LayoutInflater.from(MainActivity.this);
