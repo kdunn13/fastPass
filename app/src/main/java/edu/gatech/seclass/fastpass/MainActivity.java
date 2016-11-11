@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements NfcAdapter.Create
         // Register callback
         mNfcAdapter.setNdefPushMessageCallback(this, this);
 
+        performTagOperations(getIntent());
+
+
     }
 
     @Override
@@ -313,6 +316,11 @@ public class MainActivity extends AppCompatActivity implements NfcAdapter.Create
         // record 0 contains the MIME type, record 1 is the AAR, if present
         textView.setText(new String(msg.getRecords()[0].getPayload()));
     }
-
+    private void performTagOperations(Intent intent){
+        String action = intent.getAction();
+        if(action.equals(NfcAdapter.ACTION_TAG_DISCOVERED) ||
+                action.equals(NfcAdapter.ACTION_TECH_DISCOVERED) ){
+        }
+    }
 
 }
