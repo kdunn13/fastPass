@@ -11,38 +11,19 @@
     tools:context="edu.gatech.seclass.fastpass.MainActivity">
 
     <Button
-        android:text="Recieve a file"
+        android:text="Add a form!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/addFormButton"
+        android:layout_marginTop="28dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/addFormButton"
-        android:layout_marginStart="12dp"
-        android:id="@+id/recieveFile" />
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/formList"
-        android:layout_below="@+id/recieveFile"
+        android:layout_below="@+id/addFormButton"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="109dp" />
-
-    <TextView
-        android:text="Testtttttt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/formList"
-        android:layout_alignStart="@+id/addFormButton"
-        android:layout_marginStart="14dp"
-        android:layout_marginBottom="26dp"
-        android:id="@+id/textView" />
-
-    <Button
-        android:text="Add a form!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addFormButton"
-        android:layout_marginStart="80dp"
-        android:layout_below="@+id/recieveFile"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="21dp" />
 </RelativeLayout>

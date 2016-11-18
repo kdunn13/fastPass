@@ -39,7 +39,7 @@ import static android.nfc.NdefRecord.createMime;
 public class MainActivity extends AppCompatActivity  {
 
     private Button addFormButton;
-    private Button recieveFileButton;
+    //private Button recieveFileButton;
     ArrayList<form> listOfForms;
     ArrayAdapter<form> formListAdapter;
     private ListView formListView;
@@ -68,30 +68,37 @@ public class MainActivity extends AppCompatActivity  {
         addFormButton = (Button) findViewById(R.id.addFormButton);
         formListView = (ListView) findViewById(R.id.formList);
         formListView.setAdapter(formListAdapter);
-        recieveFileButton = (Button) findViewById(R.id.recieveFile);
+        //recieveFileButton = (Button) findViewById(R.id.recieveFile);
 
 
         addFormButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNewFormDialog();
+                // Navigation code.
+                Intent listIntent = new Intent(getApplicationContext(), editFormActivity.class);
+                listIntent.putExtra("formID", "-1");
+                listIntent.putExtra("createNew", true);
+                startActivity(listIntent);
             }
         });
 
+        /*
         recieveFileButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 recieveFile();
             }
         });
-
+        */
 
         formListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
             {
+                // Navigation code.
                 Intent listIntent = new Intent(getApplicationContext(), editFormActivity.class);
                 listIntent.putExtra("formID", Integer.toString(listOfForms.get(position).formID));
+                listIntent.putExtra("createNew", false);
                 startActivity(listIntent);
 
                 // editForm(position);
@@ -119,10 +126,8 @@ public class MainActivity extends AppCompatActivity  {
     };
 
     private void editForm(final int position) {
+
         final form myForm = listOfForms.get(position);
-
-
-
 
         LayoutInflater li = LayoutInflater.from(MainActivity.this);
         final View promptsView = li.inflate(R.layout.create_or_edit_form, null);
@@ -196,10 +201,11 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    /*
     private void recieveFile() {
         Toast.makeText(MainActivity.this, "Transfer file code goes here",
                 Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     private void createNewFormDialog() {
         LayoutInflater li = LayoutInflater.from(MainActivity.this);

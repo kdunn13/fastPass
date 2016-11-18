@@ -9,6 +9,9 @@ public class form {
     public int formID;
     public String firstName;
     public String lastName;
+    public String dateOfBirth;
+    public String insurer;
+    public String phone;
 
     @Override
     public String toString()

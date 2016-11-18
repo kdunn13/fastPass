@@ -5,46 +5,128 @@
 
 
     <TextView
-        android:text="First Name:"
+        android:text="First Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="37dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="37dp"
-        android:id="@+id/textView3" />
+        android:id="@+id/FirstName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/LastName"
+        android:layout_marginBottom="35dp"
+        android:id="@+id/editButton" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/deleteButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="27dp"
+        android:id="@+id/cancelButton" />
+
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteButton"
+        android:layout_alignBaseline="@+id/editButton"
+        android:layout_alignBottom="@+id/editButton"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="Last Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_marginTop="41dp"
+        android:id="@+id/LastName"
+        android:layout_below="@+id/FirstNameEdit"
+        android:layout_alignStart="@+id/FirstName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/FirstNameEdit"
+        android:layout_alignBaseline="@+id/FirstName"
+        android:layout_alignBottom="@+id/FirstName"
+        android:layout_toEndOf="@+id/editButton" />
+
+    <TextView
+        android:text="Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="91dp"
+        android:id="@+id/Phone"
+        android:layout_below="@+id/LastNameEdit"
+        android:layout_alignStart="@+id/LastName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/LastNameEdit"
+        android:layout_alignBaseline="@+id/LastName"
+        android:layout_alignBottom="@+id/LastName"
+        android:layout_alignStart="@+id/FirstNameEdit" />
+
+    <TextView
+        android:text="Insurer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Insurer"
+        android:layout_above="@+id/PhoneEdit"
+        android:layout_alignStart="@+id/Phone"
+        android:layout_marginBottom="35dp" />
+
+    <TextView
+        android:text="Date of Birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/DateOfBirth"
+        android:layout_alignBaseline="@+id/DOBEdit"
+        android:layout_alignBottom="@+id/DOBEdit"
+        android:layout_alignEnd="@+id/FirstName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/PhoneEdit"
+        android:layout_alignTop="@+id/Phone"
+        android:layout_alignStart="@+id/DOBEdit" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/lastNameInput"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginStart="13dp" />
+        android:id="@+id/InsurerEdit"
+        android:layout_alignBaseline="@+id/Insurer"
+        android:layout_alignBottom="@+id/Insurer"
+        android:layout_alignStart="@+id/PhoneEdit" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:ems="10"
-        android:id="@+id/firstNameInput"
-        android:layout_marginStart="12dp"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignStart="@+id/lastNameInput" />
-
+        android:id="@+id/DOBEdit"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/PhoneEdit"
+        android:layout_toEndOf="@+id/editButton" />
 
 
 </RelativeLayout>
