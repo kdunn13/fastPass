@@ -50,7 +50,7 @@ public class editFormActivity extends AppCompatActivity implements NfcAdapter.Cr
             @Override
             public void onClick(View v) {
                 // Navigation code.
-                Intent listIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent listIntent = new Intent(getApplicationContext(), form_launch.class);
                 startActivity(listIntent);
             }
         });
@@ -59,7 +59,7 @@ public class editFormActivity extends AppCompatActivity implements NfcAdapter.Cr
             @Override
             public void onClick(View v) {
                 DBHelper.deleteForm(formDetails);
-                Intent listIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent listIntent = new Intent(getApplicationContext(), form_launch.class);
                 startActivity(listIntent);
             }
         });
@@ -88,7 +88,7 @@ public class editFormActivity extends AppCompatActivity implements NfcAdapter.Cr
                     DBHelper.editForm(formDetails);
                 }
 
-                Intent listIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent listIntent = new Intent(getApplicationContext(), form_launch.class);
                 startActivity(listIntent);
             }
         });

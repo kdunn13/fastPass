@@ -77,8 +77,9 @@ public class receiveFormActivity extends AppCompatActivity {
 
         DBHelper.insertForm(myForm);
 
-        Intent intent = new Intent(receiveFormActivity.this, MainActivity.class);
+        Intent intent = new Intent(receiveFormActivity.this, form_launch.class);
         startActivity(intent);
+
     }
 
     @Override
