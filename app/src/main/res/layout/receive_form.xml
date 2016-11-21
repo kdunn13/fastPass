@@ -4,16 +4,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="First Name:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="37dp"
-        android:id="@+id/FirstName" />
-
-    <TextView
         android:text="Last Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +11,35 @@
         android:id="@+id/LastName"
         android:layout_below="@+id/FirstName"
         android:layout_alignStart="@+id/FirstName" />
+
+    <Button
+        android:text="Save form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:id="@+id/saveForm"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/LastName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/firstNameInput"
+        android:layout_alignBaseline="@+id/FirstName"
+        android:layout_alignBottom="@+id/FirstName"
+        android:layout_toEndOf="@+id/saveForm" />
+
+    <TextView
+        android:text="First Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="43dp"
+        android:id="@+id/FirstName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,28 +49,72 @@
         android:id="@+id/lastNameInput"
         android:layout_alignBaseline="@+id/LastName"
         android:layout_alignBottom="@+id/LastName"
-        android:layout_toEndOf="@+id/FirstName"
-        android:layout_marginStart="13dp" />
+        android:layout_alignStart="@+id/firstNameInput" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/dateOfBirthInput"
+        android:layout_below="@+id/lastNameInput"
+        android:layout_alignStart="@+id/lastNameInput"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:text="Date of Birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignBaseline="@+id/dateOfBirthInput"
+        android:layout_alignBottom="@+id/dateOfBirthInput"
+        android:layout_alignStart="@+id/LastName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/phoneInput"
+        android:layout_below="@+id/dateOfBirthInput"
+        android:layout_alignStart="@+id/dateOfBirthInput"
+        android:layout_marginTop="33dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/firstNameInput"
-        android:layout_marginStart="12dp"
-        android:layout_alignBaseline="@+id/FirstName"
-        android:layout_alignBottom="@+id/FirstName"
-        android:layout_alignStart="@+id/lastNameInput" />
+        android:id="@+id/insurerInput"
+        android:layout_below="@+id/phoneInput"
+        android:layout_alignStart="@+id/phoneInput"
+        android:layout_marginTop="34dp" />
 
-    <Button
-        android:text="Save form!"
+    <TextView
+        android:text="Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="122dp"
-        android:id="@+id/saveForm"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/textView4"
+        android:layout_alignBaseline="@+id/phoneInput"
+        android:layout_alignBottom="@+id/phoneInput"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:text="Insurer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignBaseline="@+id/insurerInput"
+        android:layout_alignBottom="@+id/insurerInput"
+        android:layout_alignStart="@+id/textView4" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/saveForm"
+        android:layout_alignEnd="@+id/insurerInput"
+        android:id="@+id/cancelButton" />
 
 
 </RelativeLayout>

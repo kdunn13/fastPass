@@ -109,15 +109,13 @@ public class editFormActivity extends AppCompatActivity implements NfcAdapter.Cr
     public NdefMessage createNdefMessage(NfcEvent event) {
         String text = null;
 
-        String formIDAsString = getIntent().getExtras().getString("formID");
-        int formID = Integer.parseInt(formIDAsString);
-
-        form selectedForm = DBHelper.getFormById(formID);
-
         JSONObject dataToSend = new JSONObject();
         try {
             dataToSend.put("firstName", formDetails.firstName);
             dataToSend.put("lastName", formDetails.lastName);
+            dataToSend.put("dateOfBirth", formDetails.dateOfBirth);
+            dataToSend.put("insurer", formDetails.insurer);
+            dataToSend.put("phone",  formDetails.phone);
             text = dataToSend.toString();
         } catch (JSONException e) {
             e.printStackTrace();
